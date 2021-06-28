@@ -8,9 +8,10 @@ import {
   Inject,
   ViewsDirective,
   ViewDirective,
+  Agenda
 } from "@syncfusion/ej2-react-schedule";
 import { extend, createElement } from "@syncfusion/ej2-base";
-import { ButtonComponent } from "@syncfusion/ej2-react-buttons";
+import emailjs from 'emailjs-com';
 import "./index.css";
 
 class Scheduler extends React.Component {
@@ -55,13 +56,24 @@ class Scheduler extends React.Component {
       this.scheduleObj.deleteEvent(e.data.Id);
       localStorage.setItem("allEvents", JSON.stringify(this.scheduleData));
     }
-    if (e.type === "QuickInfo" || Object.keys(e.data).length > 0) {
+    if (e.type === "QuickInfo" || (e.data && Object.keys(e.data).length > 0)) {
       let Data = [];
       Data.push(e.data);
       this.scheduleObj.saveEvent(Data);
       localStorage.setItem("allEvents", JSON.stringify(this.scheduleData));
+      this.sendEmail(e.data.Emails, new Date(e.data.StartTime.getTime() - e.data.StartTime.getTimezoneOffset()*60*1000), new Date(e.data.EndTime), e.data.Subject);
     }
+    console.log(e);
   };
+
+  sendEmail = (email, start, end, subject) => {
+    emailjs.send('service_8tjeee9','template_udf9dgo', {email, start, end, subject}, 'user_K6Qa3TxsyrpO8CVAX1JCW')
+    .then((response) => {
+      console.log('SUCCESS!', response.status, response.text);
+    }, (error) => {
+        console.log('FAILED!', error.message);
+    });
+  }
   render() {
     return (
       <>
@@ -74,14 +86,16 @@ class Scheduler extends React.Component {
           popupOpen={this.onPopupOpen.bind(this)}
           enablePersistence={true}
           popupClose={this.onPopupClose.bind(this)}
+          currentView="Month"
         >
           <ViewsDirective>
             <ViewDirective option="Day" />
             <ViewDirective option="Week" />
             <ViewDirective option="WorkWeek" />
             <ViewDirective option="Month" />
+            <ViewDirective option="Agenda" />
           </ViewsDirective>
-          <Inject services={[Day, Week, WorkWeek, Month]} />
+          <Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
         </ScheduleComponent>
       </>
     );
