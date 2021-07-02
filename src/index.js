@@ -3,10 +3,22 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { AppProvider } from './hooks/useGlobalContext';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom'
+import Home from './Home';
+import Navbar from './components/Navbar';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppProvider>
+      <Router>
+        <Navbar/>
+        <Switch>
+          <Route exact path="/calendar" component={App} />
+          <Route exact path="/" component={Home} />
+        </Switch>
+      </Router>
+    </AppProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
