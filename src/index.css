@@ -11,3 +11,131 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: rgb(6, 1, 39);
+  color: #fff;
+  padding: 0 3%;
+}
+
+.page {
+  padding: 3%;
+  display: flex;
+  align-items: center;
+}
+
+.page-intro {
+  display: flex;
+  flex-direction: column;
+  flex: 0.6;
+  align-items: center;
+  justify-content: center
+}
+
+.intro-text {
+  font-weight: 800;
+  font-size: 3rem;
+  text-align: center;
+  width: 70%;
+  color: rgb(6, 1, 39);
+  text-shadow: 3px 3px 10px rgb(92, 82, 156);
+}
+
+.page-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0.4;
+}
+
+.login-page{
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgb(246,242,249);
+  background: linear-gradient(90deg, rgba(246,242,249,1) 50%, rgba(237,226,255,1) 50%);
+}
+.login-container{
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  background-color: rgb(6, 1, 39);
+  color: #fff;
+  box-shadow: 4px 4px 1px 0px rgb(14, 13, 13);
+  justify-content: center;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.login-container:hover{
+  background: rgb(64, 6, 131);
+}
+.login-title{
+  text-align: center;
+}
+.login-form{
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.form-item{
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+.form-text{
+  font-size: 0.8rem;
+  margin-bottom: 20px;
+}
+.login-btn{
+  width: 60%;
+  margin: auto;
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.create-account-btn{
+  padding: 8px;
+  box-shadow: 0px 2px 5px 0px rgb(24, 2, 39);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.form-file-upload{
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+.file-input-label{
+  flex: 0.4;
+  background: rgb(253, 185, 37);
+  padding: 5px;
+  color: #000;
+  margin: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+.file-input{
+  flex: 0.6;
+  padding: 5px;
+  background: transparent;
+  border: 0.25px solid #fff;
+  border-radius: 5px;
+}
+
+.form-input {
+  padding: 8px;
+  margin-top: 4px;
+  border-radius: 2px;
+}
